@@ -64,6 +64,11 @@
     @media(max-width:700px) { .steps, .two-up { grid-template-columns:1fr; } .browser-main { grid-template-columns:1fr; } .browser-sidebar { display: none; } .browser-panel { padding: 16px; } .movie-info h3 { font-size: 16px; } .watch { font-size: 11px; padding: 8px 10px; top: 43px; } }
     @media print { :root { color: #141829; background: white; } body { background: white; } .hero,.step,.illustration,.browser { break-inside: avoid; } .note { color: #333; } }
 
+    .adblock-alert { margin-bottom: 20px; padding: 23px 24px; border: 2px solid #ffd467; border-radius: 18px; background: linear-gradient(115deg,#433013,#352413); box-shadow: 0 8px 28px #0006; }
+    .adblock-alert h2 { color: #ffe38b; font-size: clamp(20px,3vw,27px); margin-bottom: 9px; }
+    .adblock-alert p { color: #fff0ca; margin-bottom: 11px; font-size: 16px; }
+    .adblock-alert a { display: inline-block; color: #141b29; background: #ffe49a; padding: 8px 12px; margin: 4px 6px 4px 0; border-radius: 9px; font-weight: 750; text-decoration: none; }
+    .adblock-alert small { display: block; color: #f7d9a7; margin-top: 5px; }
     html { scroll-behavior: smooth; }
     .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
     .brand { color: #fff; font-size: 17px; font-weight: 850; text-decoration: none; letter-spacing: -.02em; }
@@ -86,66 +91,7 @@
     .download .platform { color: #ffb493; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
     .download h3 { margin: 0; }
     .download p { font-size: 14px; margin: 0 0 12px; flex: 1; }
-    .download .button { align-self: flex-start; font-size: 14px; }
-    .download small { color: #adb9cf; font-size: 12px; overflow-wrap: anywhere; }
-    .section-intro { max-width: 760px; }
-    details { padding: 17px 19px; border: 1px solid #394256; background: #1d2332; border-radius: 12px; margin: 10px 0; }
-    details summary { color: #eef1fb; cursor: pointer; font-weight: 780; }
-    details p { margin: 11px 0 0; font-size: 14px; }
-    .note + .note { margin-top: 12px; }
-    .caption code { white-space: normal; overflow-wrap: anywhere; }
-    @media(max-width:750px) { .downloads { grid-template-columns: 1fr; } .topbar { align-items: flex-start; } }
-    @media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } }
-  </style>
-</head>
-<body>
-  <main>
-    <nav class="topbar" aria-label="Навигация">
-      <a class="brand" href="#top">🍿 Kino → SSpoisk</a>
-      <div class="toplinks"><a href="#download">Скачать</a><a href="#install">Установка</a><a href="#how">Как пользоваться</a><a href="#help">Помощь</a></div>
-    </nav>
-    <header class="hero" id="top">
-      <span class="badge">Бесплатное расширение · Для компьютера</span>
-      <h1>Фильмы и сериалы —<br>в пару кликов</h1>
-      <p class="intro">Ищите фильмы и сериалы на <strong>Кинопоиске</strong> и открывайте их страницы на <strong>SSpoisk</strong> одной кнопкой. Работает в Chrome, Brave, Edge, Opera и других браузерах на Chromium.</p>
-      <div class="note"><strong>Можно и без установки.</strong> Откройте карточку фильма или сериала на Кинопоиске и замените <code>kino</code> на <code>ss</code> в адресной строке: <code>kinopoisk.ru/film/123/</code> → <code>sspoisk.ru/film/123/</code>. Результат будет тем же. Расширение лишь экономит несколько действий.</div>
-      <div class="actions">
-        <a class="button" href="https://github.com/elijahsol13/kino-sspoisk/releases/latest">⬇ Скачать расширение</a>
-        <a class="button secondary" href="#install">Посмотреть инструкцию ↓</a>
-      </div>
-      <div class="flow" aria-label="Как работает расширение"><span>🔎 Найти на Кинопоиске</span><b>→</b><span>▶ Кнопка в карточке</span><b>→</b><span>Открыть SSpoisk</span></div>
-    </header>
-
-    <section id="download" class="section">
-      <h2>Скачать бесплатно</h2>
-      <p class="section-intro">Выберите один файл под свою систему. Установщик сохранит расширение на компьютер и покажет, что нажать в браузере. Терминал и команды не нужны.</p>
-      <div class="downloads">
-        <article class="download"><span class="platform">🪟 Windows 10 / 11</span><h3>Мастер установки</h3><p>Запустите EXE двойным щелчком, выберите браузер и следуйте подсказкам «Далее».</p><a class="button" href="https://github.com/elijahsol13/kino-sspoisk/releases/latest/download/Kino-SSpoisk-Setup.exe">Скачать для Windows ↓</a><small>Kino-SSpoisk-Setup.exe</small></article>
-        <article class="download"><span class="platform">🍎 macOS 12+</span><h3>Приложение для Mac</h3><p>Откройте DMG, запустите «Установить Kino-SSpoisk» и следуйте подсказкам. Подходит для Intel и Apple Silicon.</p><a class="button" href="https://github.com/elijahsol13/kino-sspoisk/releases/latest/download/Kino-SSpoisk-macOS.dmg">Скачать для Mac ↓</a><small>Kino-SSpoisk-macOS.dmg</small></article>
-        <article class="download"><span class="platform">📦 Любая система</span><h3>Ручная установка</h3><p>ZIP с файлами расширения и короткой инструкцией, если удобнее установить самостоятельно.</p><a class="button secondary" href="https://github.com/elijahsol13/kino-sspoisk/releases/latest/download/Kino-SSpoisk-manual.zip">Скачать ZIP ↓</a><small>Kino-SSpoisk-manual.zip</small></article>
-      </div>
-      <p class="caption">Все файлы опубликованы в <a href="https://github.com/elijahsol13/kino-sspoisk/releases/latest" style="color:#ffc09f">GitHub Releases</a>. Windows и Mac могут предупредить о неизвестном разработчике: коммерческой подписи и нотарификации у установщиков нет.</p>
-    </section>
-
-    <section id="install" class="section">
-      <h2>Установка в браузер: 3 шага</h2>
-      <p class="section-intro">После запуска мастера установки файлы уже лежат в постоянной папке. Осталось разрешить локальную установку в браузере. Если скачали ZIP, сначала распакуйте его в постоянную папку, например «Документы».</p>
-      <div class="steps">
-        <article class="step"><div class="number">1</div><h3>Откройте «Расширения»</h3><p>Мастер откроет нужную вкладку сам. При ручной установке используйте адрес браузера из подсказки ниже.</p></article>
-        <article class="step"><div class="number">2</div><h3>Включите режим разработчика</h3><p>Найдите переключатель <strong>«Режим разработчика»</strong> (Developer mode) — обычно справа вверху.</p></article>
-        <article class="step"><div class="number">3</div><h3>Выберите папку</h3><p>Нажмите <strong>«Загрузить распакованное расширение»</strong> (Load unpacked). При установке через мастер выбирайте папку <strong>Extension</strong>, при установке из ZIP — <strong>Kino-SSpoisk</strong>.</p></article>
-      </div>
-      <p class="caption"><strong>Адреса вкладки «Расширения»:</strong> Chrome — <code>chrome://extensions</code> · Brave — <code>brave://extensions</code> · Edge — <code>edge://extensions</code> · Opera — <code>opera://extensions</code> · Яндекс — <code>browser://extensions</code>.</p>
-      <div class="browser" role="img" aria-label="Схема страницы расширений: режим разработчика включён, видна кнопка загрузки расширения">
-        <div class="browser-top"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="address">chrome://extensions</span></div>
-        <div class="browser-main"><div class="browser-sidebar">Расширения</div><div class="browser-panel">
-          <div class="browser-head"><b>Управление расширениями</b><span style="font-size:13px">Режим разработчика <span class="fake-toggle" aria-label="включён"></span></span></div>
-          <div class="fake-button">⬆ Загрузить распакованное расширение</div>
-          <div class="fake-helper">Выберите папку, содержащую <strong style="color:#28334c">manifest.json</strong>. Установщик подскажет её расположение.</div>
-        </div></div>
-      </div>
-      <p class="caption">Схематичный пример Chrome. Названия и расположение кнопок могут отличаться.</p>
-      <div class="note"><strong>Firefox:</strong> локальная загрузка работает только временно: <code>about:debugging#/runtime/this-firefox</code> → «Загрузить временное дополнение» → выбрать <code>manifest.json</code>. После перезапуска Firefox дополнение исчезнет. Для постоянной установки нужна версия, подписанная Mozilla.</div>
+    .download .button { align-self: flex-st…4654 tokens truncated…ut:debugging#/runtime/this-firefox</code> → «Загрузить временное дополнение» → выбрать <code>manifest.json</code>. После перезапуска Firefox дополнение исчезнет. Для постоянной установки нужна версия, подписанная Mozilla.</div>
       <div class="note warn"><strong>Не удаляйте папку с расширением.</strong> Браузер использует файлы прямо из неё. Мастер сам сохраняет их в постоянное место. В некоторых версиях Яндекс Браузера локальная установка может быть недоступна.</div>
     </section>
 
@@ -155,7 +101,7 @@
         <li>Нажмите значок <strong>Расширения 🧩</strong> возле адресной строки и, если нужно, закрепите <strong>Kino → SSpoisk</strong> на панели.</li>
         <li>Откройте его и введите название фильма или сериала. Нажмите <strong>Enter</strong> или кнопку поиска.</li>
         <li>В новой вкладке откроются <strong>результаты поиска на Кинопоиске</strong>. Выберите нужную карточку.</li>
-        <li>В правом верхнем углу карточки нажмите оранжевую кнопку <strong>«▶ Смотреть онлайн»</strong>: откроется соответствующая страница SSpoisk в новой вкладке.</li>
+        <li>В правом верхнем углу карточки нажмите оранжевую кнопку <strong>«▶ Смотреть онлайн»</strong>: откроется соответствующая страница kinokino.win в новой вкладке.</li>
       </ol>
       <div class="two-up">
         <div class="illustration">
@@ -187,10 +133,10 @@
       <details><summary>Значка расширения не видно</summary><p>Откройте меню 🧩 рядом с адресной строкой и закрепите Kino → SSpoisk на панели инструментов.</p></details>
       <details><summary>Кнопка «▶ Смотреть онлайн» не появилась</summary><p>Проверьте, что открыта именно карточка фильма или сериала на Кинопоиске, и обновите вкладку. На странице результатов поиска кнопка не появляется.</p></details>
       <details><summary>Компьютер предупреждает о неизвестном разработчике</summary><p>Установщики опубликованы без платной цифровой подписи. Windows SmartScreen и macOS Gatekeeper могут показывать предупреждение. Убедитесь, что файл скачан с официальной страницы релизов этого репозитория. На Mac после попытки открытия может потребоваться разрешить запуск в «Системные настройки → Конфиденциальность и безопасность».</p></details>
-      <details><summary>Страница SSpoisk не загружается</summary><p>SSpoisk — отдельный сайт. Расширение только открывает соответствующий адрес, поэтому доступность страницы и наличие видео зависят от внешнего сервиса.</p></details>
+      <details><summary>Страница плеера не загружается</summary><p>kinokino.win — отдельный сайт. Расширение только открывает соответствующий адрес, поэтому доступность страницы и наличие видео зависят от внешнего сервиса.</p></details>
     </section>
 
-    <footer>Независимый бесплатный проект. Расширение не связано с Кинопоиском и SSpoisk, не предоставляет видео и не требует логина или API-ключей. Не вводите пароль от Кинопоиска на сторонних сайтах. <a href="https://github.com/elijahsol13/kino-sspoisk" style="color:#ffb493">Исходный код на GitHub ↗</a></footer>
+    <footer>Независимый бесплатный проект. Расширение не связано с Кинопоиском и внешним видеосайтом, не предоставляет видео и не требует логина или API-ключей. Не вводите пароль от Кинопоиска на сторонних сайтах. <a href="https://github.com/elijahsol13/kino-sspoisk" style="color:#ffb493">Исходный код на GitHub ↗</a></footer>
   </main>
 </body>
 </html>

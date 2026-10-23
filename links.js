@@ -16,7 +16,7 @@ globalThis.KinoLinks = Object.freeze({
       return null;
     }
 
-    return `https://sspoisk.ru${url.pathname}`;
+    return `https://kinokino.win${url.pathname}`;
   },
 
   toSearchUrl(query) {

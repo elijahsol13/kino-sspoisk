@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Kino → SSpoisk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Поиск фильмов и сериалов на Кинопоиске и быстрый переход к внешнему плееру.",
   "icons": {
     "16": "icon.png",

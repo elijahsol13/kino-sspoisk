@@ -25,8 +25,8 @@
     button.target = '_blank';
     button.rel = 'noopener noreferrer';
     button.textContent = '▶ Смотреть онлайн';
-    button.title = 'Открыть на SSpoisk в новой вкладке';
-    button.setAttribute('aria-label', 'Смотреть онлайн на SSpoisk (новая вкладка)');
+    button.title = 'Открыть на kinokino.win в новой вкладке';
+    button.setAttribute('aria-label', 'Смотреть онлайн на kinokino.win (новая вкладка)');
     document.body.appendChild(button);
   }
 

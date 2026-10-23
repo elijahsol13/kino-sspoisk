@@ -18,9 +18,9 @@ function links() {
 
 test('строит ссылку плеера для фильма и сериала на Кинопоиске', () => {
   const { toPlayerUrl } = links();
-  assert.equal(toPlayerUrl('https://www.kinopoisk.ru/film/123456/'), 'https://sspoisk.ru/film/123456/');
-  assert.equal(toPlayerUrl('https://kinopoisk.ru/series/464963/'), 'https://sspoisk.ru/series/464963/');
-  assert.equal(toPlayerUrl('https://www.kinopoisk.ru/film/42?utm_source=x#part'), 'https://sspoisk.ru/film/42');
+  assert.equal(toPlayerUrl('https://www.kinopoisk.ru/film/123456/'), 'https://kinokino.win/film/123456/');
+  assert.equal(toPlayerUrl('https://kinopoisk.ru/series/464963/'), 'https://kinokino.win/series/464963/');
+  assert.equal(toPlayerUrl('https://www.kinopoisk.ru/film/42?utm_source=x#part'), 'https://kinokino.win/film/42');
 });
 
 test('не создает ссылку для посторонних адресов или не-карточек', () => {
@@ -79,12 +79,12 @@ function fakePage(href) {
   return { context, location, document, nodes, listeners, mutation: () => mutation() };
 }
 
-test('кнопка появляется на карточке и открывает адрес SSpoisk в новой вкладке', () => {
+test('кнопка появляется на карточке и открывает адрес kinokino.win в новой вкладке', () => {
   const page = fakePage('https://www.kinopoisk.ru/film/123456/');
   execute('content.js', page.context);
   const anchor = page.document.getElementById('rusty-kino-watch-button');
   assert.ok(anchor);
-  assert.equal(anchor.href, 'https://sspoisk.ru/film/123456/');
+  assert.equal(anchor.href, 'https://kinokino.win/film/123456/');
   assert.equal(anchor.target, '_blank');
   assert.match(anchor.rel, /noopener/);
 });
@@ -95,7 +95,7 @@ test('кнопка обновляется и исчезает при SPA-пер�
   assert.equal(page.nodes.size, 1);
   page.location.href = 'https://www.kinopoisk.ru/film/42/';
   page.mutation();
-  assert.equal(page.document.getElementById('rusty-kino-watch-button').href, 'https://sspoisk.ru/film/42/');
+  assert.equal(page.document.getElementById('rusty-kino-watch-button').href, 'https://kinokino.win/film/42/');
   page.location.href = 'https://www.kinopoisk.ru/lists/';
   page.mutation();
   assert.equal(page.nodes.size, 0);
