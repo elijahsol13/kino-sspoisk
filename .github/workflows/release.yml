@@ -8,6 +8,7 @@ on:
       - 'README.md'
       - 'START_HERE.html'
       - 'docs/**'
+      - '.github/workflows/release.yml'
   workflow_dispatch:
 
 permissions:
