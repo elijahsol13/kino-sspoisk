@@ -1,4 +1,5 @@
 name: Smoke-test published Windows installer
+# Runs against the downloadable EXE on an actual GitHub-hosted Windows machine.
 
 on:
   push:
