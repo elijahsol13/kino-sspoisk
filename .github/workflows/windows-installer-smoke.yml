@@ -1,0 +1,53 @@
+name: Smoke-test published Windows installer
+
+on:
+  push:
+    paths:
+      - '.github/workflows/windows-installer-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-published-exe:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download the actual v1.0.0 Windows installer and ZIP
+        shell: powershell
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          New-Item -ItemType Directory -Path dist | Out-Null
+          gh release download v1.0.0 -R $env:GITHUB_REPOSITORY -p 'Kino-SSpoisk-Setup.exe' -p 'Kino-SSpoisk-manual.zip' -D dist
+          if ($LASTEXITCODE -ne 0) { throw 'Could not download release assets' }
+
+      - name: Test EXE and verify actual installation files
+        shell: powershell
+        run: |
+          & .\dist\Kino-SSpoisk-Setup.exe --selftest
+          if ($LASTEXITCODE -ne 0) { throw 'Embedded archive self-test failed' }
+
+          # Invoke the same installation routine as the wizard's Next button.
+          # Windows PowerShell 5.1 can load this .NET Framework WinForms EXE.
+          $exe = (Resolve-Path '.\dist\Kino-SSpoisk-Setup.exe').Path
+          $assembly = [Reflection.Assembly]::LoadFrom($exe)
+          $installer = $assembly.GetType('KinoSSpoisk.Installer', $true)
+          $method = $installer.GetMethod('Install', [Reflection.BindingFlags]'NonPublic, Static')
+          if ($null -eq $method) { throw 'Installer.Install method not found' }
+          $method.Invoke($null, @())
+
+          Expand-Archive '.\dist\Kino-SSpoisk-manual.zip' '.\dist\expected' -Force
+          $target = Join-Path $env:LOCALAPPDATA 'KinoSSpoisk\Extension'
+          $expectedDir = '.\dist\expected\Kino-SSpoisk'
+          $files = @('manifest.json', 'icon.png', 'links.js', 'popup.html', 'popup.js', 'content.js', 'content.css')
+          foreach ($file in $files) {
+            $installed = Join-Path $target $file
+            $expected = Join-Path $expectedDir $file
+            if (!(Test-Path $installed) -or !(Test-Path $expected)) { throw "Missing installed file: $file" }
+            if ((Get-FileHash $installed -Algorithm SHA256).Hash -ne (Get-FileHash $expected -Algorithm SHA256).Hash) {
+              throw "Installed contents differ from release ZIP: $file"
+            }
+          }
+          Write-Host 'PASS: Published EXE extracted all 7 files exactly as in the release ZIP.'
