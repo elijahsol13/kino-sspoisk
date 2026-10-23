@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Скачайте Kino → SSpoisk для Windows или macOS. Иллюстрированная инструкция по установке в Chrome, Brave, Edge, Opera и другие браузеры.">
+  <title>Kino → SSpoisk — установка и использование</title>
+  <style>
+    :root { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #f5f6fa; background: #10131d; font-size: 16px; line-height: 1.55; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 1000px; margin: auto; padding: 36px 24px 72px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 22px; }
+    h2 { font-size: clamp(24px, 3.5vw, 32px); margin-bottom: 12px; letter-spacing: -0.02em; }
+    h3 { font-size: 20px; margin-bottom: 8px; }
+    p { color: #b8c0d3; }
+    strong { color: #f4f5fa; }
+    code { padding: 3px 7px; background: #303648; border: 1px solid #485065; border-radius: 6px; color: #fff; white-space: nowrap; }
+    .badge { display: inline-block; padding: 6px 12px; border: 1px solid #f26b45; border-radius: 100px; color: #ffc3a6; background: #2b1b1b; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 800; margin-bottom: 18px; }
+    .intro { font-size: 19px; max-width: 780px; }
+    .hero { background: linear-gradient(135deg, #282030 0%, #22293c 70%, #172734); border: 1px solid #394255; border-radius: 24px; padding: clamp(24px, 5vw, 48px); margin-bottom: 38px; }
+    .note { padding: 15px 17px; border: 1px solid #4b5263; border-radius: 12px; background: #1a1f2d; font-size: 14px; color: #c8d0df; }
+    .note.warn { border-color: #8b5a37; background: #2d251d; }
+    .section { margin-top: 48px; }
+    .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; margin-top: 22px; }
+    .step { padding: 20px; background: #1d2332; border: 1px solid #343d53; border-radius: 17px; }
+    .step .number { display: grid; place-items: center; background: #f5653b; color: #111; width: 34px; height: 34px; font-weight: 900; border-radius: 10px; margin-bottom: 12px; }
+    .step p { margin-bottom: 0; font-size: 14px; }
+    .browser { margin-top: 25px; border: 1px solid #495268; border-radius: 15px; overflow: hidden; background: #eef0f7; color: #202536; box-shadow: 0 24px 45px #090a1355; }
+    .browser-top { height: 44px; display: flex; gap: 9px; align-items: center; background: #2b3142; color: #c7d1e3; padding: 0 16px; font-size: 12px; }
+    .dot { width: 10px; height: 10px; background: #a5a9b6; border-radius: 50%; }
+    .dot.red { background: #e77773; } .dot.yellow { background: #ecc470; } .dot.green { background: #7cbca2; }
+    .address { min-width: 0; flex: 1; margin-left: 10px; padding: 6px 12px; color: #e5e9f5; border: 1px solid #59627a; background: #1e2431; border-radius: 7px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+    .browser-main { display: grid; grid-template-columns: 170px 1fr; gap: 18px; padding: 23px; }
+    .browser-sidebar { padding: 18px 12px; background: #dde1ea; border-radius: 10px; font-size: 14px; font-weight: 700; }
+    .browser-panel { background: #fff; padding: 22px; border-radius: 12px; min-height: 200px; }
+    .browser-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+    .fake-toggle { display: inline-flex; width: 40px; height: 23px; justify-content: flex-end; align-items: center; border-radius: 30px; background: #2d67dc; padding: 3px; }
+    .fake-toggle:after { content: ""; width: 17px; height: 17px; background: #fff; border-radius: 50%; }
+    .fake-button { display: inline-block; border: 2px solid #f5653b; border-radius: 9px; padding: 10px 15px; background: #fff4ed; color: #803013; font-size: 14px; font-weight: 800; }
+    .fake-helper { background: #e8edf8; border-radius: 8px; padding: 15px; margin-top: 18px; color: #5e6677; font-size: 13px; }
+    .caption { color: #9ca8bd; font-size: 13px; margin-top: 12px; }
+    .two-up { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; align-items: start; margin-top: 20px; }
+    .illustration { border: 1px solid #3d4458; border-radius: 14px; padding: 18px; background: #202639; }
+    .popup { max-width: 325px; margin: 12px auto; padding: 22px 19px; background: #151722; color: white; border: 1px solid #4e576c; border-radius: 13px; }
+    .popup-brand { font-size: 17px; font-weight: 800; margin-bottom: 20px; }
+    .icon { display: inline-grid; place-items: center; background: #f5653b; color: white; width: 28px; height: 28px; border-radius: 7px; margin-right: 6px; }
+    .popup-label { display: block; font-size: 13px; margin-bottom: 6px; }
+    .popup-input { padding: 11px 12px; border-radius: 9px; background: #242838; color: #fff; border: 1px solid #fc875d; font-size: 14px; }
+    .popup-action { background: #f5653b; padding: 11px; text-align: center; margin-top: 10px; font-size: 13px; font-weight: 800; color: white; border-radius: 9px; }
+    .movie { position: relative; height: 235px; padding: 54px 22px 20px; border-radius: 10px; background: linear-gradient(115deg, #101726 0%, #3b4159 70%, #121421 100%); overflow: hidden; }
+    .movie-header { position: absolute; top: 0; right: 0; left: 0; height: 37px; padding: 9px 13px; background: #10141a; color: white; font-size: 11px; }
+    .movie-poster { display: inline-block; vertical-align: top; width: 76px; height: 119px; border-radius: 5px; background: linear-gradient(40deg, #4d5573, #a57474); margin-right: 15px; }
+    .movie-info { display: inline-block; vertical-align: top; width: calc(100% - 100px); color: #f3f4f8; }
+    .movie-info h3 { margin: 15px 0 5px; font-size: 19px; }
+    .movie-info p { font-size: 13px; }
+    .watch { position: absolute; right: 14px; top: 48px; padding: 11px 14px; background: #f55f35; font-size: 13px; font-weight: 800; color: white; border-radius: 10px; box-shadow: 0 4px 18px #0008; }
+    .small { color: #9ca8bd; font-size: 13px; }
+    .use-steps { padding-left: 23px; margin: 20px 0; }
+    .use-steps li { padding-left: 5px; margin-bottom: 11px; }
+    footer { margin-top: 45px; padding-top: 23px; border-top: 1px solid #343d53; color: #aeb9cb; font-size: 14px; }
+    @media(max-width:700px) { .steps, .two-up { grid-template-columns:1fr; } .browser-main { grid-template-columns:1fr; } .browser-sidebar { display: none; } .browser-panel { padding: 16px; } .movie-info h3 { font-size: 16px; } .watch { font-size: 11px; padding: 8px 10px; top: 43px; } }
+    @media print { :root { color: #141829; background: white; } body { background: white; } .hero,.step,.illustration,.browser { break-inside: avoid; } .note { color: #333; } }
+
+    html { scroll-behavior: smooth; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+    .brand { color: #fff; font-size: 17px; font-weight: 850; text-decoration: none; letter-spacing: -.02em; }
+    .toplinks { display: flex; flex-wrap: wrap; gap: 18px; }
+    .toplinks a { color: #cbd5e5; font-size: 14px; text-decoration: none; }
+    .toplinks a:hover { color: #fff; }
+    .hero { position: relative; overflow: hidden; }
+    .hero:after { content: ''; position: absolute; width: 250px; height: 250px; right: -150px; top: -165px; border: 90px solid #f5653b1c; border-radius: 50%; pointer-events: none; }
+    .hero > * { position: relative; z-index: 1; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 26px 0 20px; }
+    .button { display: inline-block; padding: 13px 19px; text-decoration: none; border-radius: 12px; font-weight: 800; font-size: 15px; background: #f5653b; color: #171a21; border: 1px solid #ff946f; }
+    .button.secondary { background: #262c3c; color: #f4f5fb; border-color: #545d72; }
+    .button:hover { filter: brightness(1.12); }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #ffaf80; outline-offset: 4px; }
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-weight: 750; font-size: 14px; color: #e7ebf5; }
+    .flow span { border-radius: 9px; background: #ffffff16; border: 1px solid #ffffff28; padding: 8px 11px; }
+    .flow b { color: #ff9d75; }
+    .downloads { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px; margin-top: 22px; }
+    .download { background: #1c2333; border: 1px solid #3c455b; border-radius: 18px; padding: 23px; display: flex; flex-direction: column; gap: 9px; }
+    .download .platform { color: #ffb493; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
+    .download h3 { margin: 0; }
+    .download p { font-size: 14px; margin: 0 0 12px; flex: 1; }
+    .download .button { align-self: flex-start; font-size: 14px; }
+    .download small { color: #adb9cf; font-size: 12px; overflow-wrap: anywhere; }
+    .section-intro { max-width: 760px; }
+    details { padding: 17px 19px; border: 1px solid #394256; background: #1d2332; border-radius: 12px; margin: 10px 0; }
+    details summary { color: #eef1fb; cursor: pointer; font-weight: 780; }
+    details p { margin: 11px 0 0; font-size: 14px; }
+    .note + .note { margin-top: 12px; }
+    .caption code { white-space: normal; overflow-wrap: anywhere; }
+    @media(max-width:750px) { .downloads { grid-template-columns: 1fr; } .topbar { align-items: flex-start; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="topbar" aria-label="Навигация">
+      <a class="brand" href="#top">🍿 Kino → SSpoisk</a>
+      <div class="toplinks"><a href="#download">Скачать</a><a href="#install">Установка</a><a href="#how">Как пользоваться</a><a href="#help">Помощь</a></div>
+    </nav>
+    <header class="hero" id="top">
+      <span class="badge">Бесплатное расширение · Для компьютера</span>
+      <h1>Фильмы и сериалы —<br>в пару кликов</h1>
+      <p class="intro">Ищите фильмы и сериалы на <strong>Кинопоиске</strong> и открывайте их страницы на <strong>SSpoisk</strong> одной кнопкой. Работает в Chrome, Brave, Edge, Opera и других браузерах на Chromium.</p>
+      <div class="actions">
+        <a class="button" href="https://github.com/elijahsol13/kino-sspoisk/releases/latest">⬇ Скачать расширение</a>
+        <a class="button secondary" href="#install">Посмотреть инструкцию ↓</a>
+      </div>
+      <div class="flow" aria-label="Как работает расширение"><span>🔎 Найти на Кинопоиске</span><b>→</b><span>▶ Кнопка в карточке</span><b>→</b><span>Открыть SSpoisk</span></div>
+    </header>
+
+    <section id="download" class="section">
+      <h2>Скачать бесплатно</h2>
+      <p class="section-intro">Выберите один файл под свою систему. Установщик сохранит расширение на компьютер и покажет, что нажать в браузере. Терминал и команды не нужны.</p>
+      <div class="downloads">
+        <article class="download"><span class="platform">🪟 Windows 10 / 11</span><h3>Мастер установки</h3><p>Запустите EXE двойным щелчком, выберите браузер и следуйте подсказкам «Далее».</p><a class="button" href="https://github.com/elijahsol13/kino-sspoisk/releases/latest/download/Kino-SSpoisk-Setup.exe">Скачать для Windows ↓</a><small>Kino-SSpoisk-Setup.exe</small></article>
+        <article class="download"><span class="platform">🍎 macOS 12+</span><h3>Приложение для Mac</h3><p>Откройте DMG, запустите «Установить Kino-SSpoisk» и следуйте подсказкам. Подходит для Intel и Apple Silicon.</p><a class="button" href="https://github.com/elijahsol13/kino-sspoisk/releases/latest/download/Kino-SSpoisk-macOS.dmg">Скачать для Mac ↓</a><small>Kino-SSpoisk-macOS.dmg</small></article>
+        <article class="download"><span class="platform">📦 Любая система</span><h3>Ручная установка</h3><p>ZIP с файлами расширения и короткой инструкцией, если удобнее установить самостоятельно.</p><a class="button secondary" href="https://github.com/elijahsol13/kino-sspoisk/releases/latest/download/Kino-SSpoisk-manual.zip">Скачать ZIP ↓</a><small>Kino-SSpoisk-manual.zip</small></article>
+      </div>
+      <p class="caption">Все файлы опубликованы в <a href="https://github.com/elijahsol13/kino-sspoisk/releases/latest" style="color:#ffc09f">GitHub Releases</a>. Windows и Mac могут предупредить о неизвестном разработчике: коммерческой подписи и нотарификации у установщиков нет.</p>
+    </section>
+
+    <section id="install" class="section">
+      <h2>Установка в браузер: 3 шага</h2>
+      <p class="section-intro">После запуска мастера установки файлы уже лежат в постоянной папке. Осталось разрешить локальную установку в браузере. Если скачали ZIP, сначала распакуйте его в постоянную папку, например «Документы».</p>
+      <div class="steps">
+        <article class="step"><div class="number">1</div><h3>Откройте «Расширения»</h3><p>Мастер откроет нужную вкладку сам. При ручной установке используйте адрес браузера из подсказки ниже.</p></article>
+        <article class="step"><div class="number">2</div><h3>Включите режим разработчика</h3><p>Найдите переключатель <strong>«Режим разработчика»</strong> (Developer mode) — обычно справа вверху.</p></article>
+        <article class="step"><div class="number">3</div><h3>Выберите папку</h3><p>Нажмите <strong>«Загрузить распакованное расширение»</strong> (Load unpacked). При установке через мастер выбирайте папку <strong>Extension</strong>, при установке из ZIP — <strong>Kino-SSpoisk</strong>.</p></article>
+      </div>
+      <p class="caption"><strong>Адреса вкладки «Расширения»:</strong> Chrome — <code>chrome://extensions</code> · Brave — <code>brave://extensions</code> · Edge — <code>edge://extensions</code> · Opera — <code>opera://extensions</code> · Яндекс — <code>browser://extensions</code>.</p>
+      <div class="browser" role="img" aria-label="Схема страницы расширений: режим разработчика включён, видна кнопка загрузки расширения">
+        <div class="browser-top"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="address">chrome://extensions</span></div>
+        <div class="browser-main"><div class="browser-sidebar">Расширения</div><div class="browser-panel">
+          <div class="browser-head"><b>Управление расширениями</b><span style="font-size:13px">Режим разработчика <span class="fake-toggle" aria-label="включён"></span></span></div>
+          <div class="fake-button">⬆ Загрузить распакованное расширение</div>
+          <div class="fake-helper">Выберите папку, содержащую <strong style="color:#28334c">manifest.json</strong>. Установщик подскажет её расположение.</div>
+        </div></div>
+      </div>
+      <p class="caption">Схематичный пример Chrome. Названия и расположение кнопок могут отличаться.</p>
+      <div class="note"><strong>Firefox:</strong> локальная загрузка работает только временно: <code>about:debugging#/runtime/this-firefox</code> → «Загрузить временное дополнение» → выбрать <code>manifest.json</code>. После перезапуска Firefox дополнение исчезнет. Для постоянной установки нужна версия, подписанная Mozilla.</div>
+      <div class="note warn"><strong>Не удаляйте папку с расширением.</strong> Браузер использует файлы прямо из неё. Мастер сам сохраняет их в постоянное место. В некоторых версиях Яндекс Браузера локальная установка может быть недоступна.</div>
+    </section>
+
+    <section class="section" id="how">
+      <h2>Как пользоваться</h2>
+      <ol class="use-steps">
+        <li>Нажми значок <strong>Расширения 🧩</strong> возле адресной строки и, если нужно, закрепи <strong>Kino → SSpoisk</strong> на панели.</li>
+        <li>Открой его и введи название фильма или сериала. Нажми <strong>Enter</strong> или кнопку поиска.</li>
+        <li>В новой вкладке откроются <strong>результаты поиска на Кинопоиске</strong>. Выбери нужную карточку.</li>
+        <li>В правом верхнем углу карточки нажми оранжевую кнопку <strong>«▶ Смотреть онлайн»</strong>: откроется соответствующая страница SSpoisk в новой вкладке.</li>
+      </ol>
+      <div class="two-up">
+        <div class="illustration">
+          <h3>1. Поиск в расширении</h3>
+          <div class="popup" role="img" aria-label="Условный вид окна расширения с полем ввода названия и кнопкой поиска">
+            <div class="popup-brand"><span class="icon">▶</span>Kino → SSpoisk</div>
+            <span class="popup-label">Название фильма или сериала</span>
+            <div class="popup-input">Интерстеллар</div>
+            <div class="popup-action">Найти на Кинопоиске →</div>
+            <p class="small" style="font-size:12px;margin:12px 0 0">Выбери фильм в результатах поиска.</p>
+          </div>
+          <p class="caption">Иллюстрация окна расширения.</p>
+        </div>
+        <div class="illustration">
+          <h3>2. Кнопка на карточке</h3>
+          <div class="movie" role="img" aria-label="Условная карточка фильма с оранжевой кнопкой Смотреть онлайн в правом верхнем углу">
+            <div class="movie-header">Кинопоиск &nbsp;&nbsp; Фильмы &nbsp;&nbsp; Сериалы</div>
+            <span class="movie-poster"></span>
+            <div class="movie-info"><h3>Карточка фильма</h3><p>Описание, рейтинг, актёры…</p></div>
+            <div class="watch">▶ Смотреть онлайн</div>
+          </div>
+          <p class="caption">Иллюстрация расположения кнопки. Работает и на страницах сериалов.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="help">
+      <h2>Частые вопросы</h2>
+      <details><summary>Значка расширения не видно</summary><p>Откройте меню 🧩 рядом с адресной строкой и закрепите Kino → SSpoisk на панели инструментов.</p></details>
+      <details><summary>Кнопка «▶ Смотреть онлайн» не появилась</summary><p>Проверьте, что открыта именно карточка фильма или сериала на Кинопоиске, и обновите вкладку. На странице результатов поиска кнопка не появляется.</p></details>
+      <details><summary>Компьютер предупреждает о неизвестном разработчике</summary><p>Установщики опубликованы без платной цифровой подписи. Windows SmartScreen и macOS Gatekeeper могут показывать предупреждение. Убедитесь, что файл скачан с официальной страницы релизов этого репозитория. На Mac после попытки открытия может потребоваться разрешить запуск в «Системные настройки → Конфиденциальность и безопасность».</p></details>
+      <details><summary>Страница SSpoisk не загружается</summary><p>SSpoisk — отдельный сайт. Расширение только открывает соответствующий адрес, поэтому доступность страницы и наличие видео зависят от внешнего сервиса.</p></details>
+    </section>
+
+    <footer>Независимый бесплатный проект. Расширение не связано с Кинопоиском и SSpoisk, не предоставляет видео и не требует логина или API-ключей. Не вводите пароль от Кинопоиска на сторонних сайтах. <a href="https://github.com/elijahsol13/kino-sspoisk" style="color:#ffb493">Исходный код на GitHub ↗</a></footer>
+  </main>
+</body>
+</html>

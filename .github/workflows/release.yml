@@ -3,6 +3,11 @@ name: Build installers and publish downloads
 on:
   push:
     branches: [main]
+    # Documentation changes must not rebuild installers or replace release assets.
+    paths-ignore:
+      - 'README.md'
+      - 'START_HERE.html'
+      - 'docs/**'
   workflow_dispatch:
 
 permissions:
