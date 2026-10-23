@@ -1,3 +1,10 @@
+ВАЖНО! Перед просмотром установите ОДИН блокировщик рекламы.
+Без него на внешнем сайте может быть очень много рекламы и всплывающих окон.
+uBlock Origin Lite (Chrome/Brave): https://chromewebstore.google.com/detail/ddkjiahejlhfcafbddmgiahcphecmpfh
+uBlock Origin (Firefox): https://addons.mozilla.org/firefox/addon/ublock-origin/
+AdBlock (Chrome): https://chromewebstore.google.com/detail/gighmmpiobklfepjocnamgkkbiglidom
+AdBlock (официальный сайт): https://getadblock.com/
+
 Kino → SSpoisk — установка вручную (ZIP)
 
 1. Распакуйте этот архив в постоянную папку, например «Документы».
@@ -19,4 +26,4 @@ Kino → SSpoisk — установка вручную (ZIP)
 
 Чтобы пользоваться: найдите фильм/сериал через значок расширения или
 зайдите в его карточку на kinopoisk.ru. Справа сверху будет кнопка
-«▶ Смотреть онлайн», которая откроет внешний сайт SSpoisk.
+«▶ Смотреть онлайн», которая откроет внешний сайт kinokino.win.

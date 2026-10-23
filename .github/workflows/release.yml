@@ -78,9 +78,10 @@ jobs:
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.0.0
-          name: Kino → SSpoisk 1.0.0
+          tag_name: v1.1.0
+          name: Kino → SSpoisk 1.1.0
           body: |
+            Переход на домен kinokino.win и ссылки на официальные блокировщики рекламы в инструкции.
             ## Скачать
             - **Windows:** `Kino-SSpoisk-Setup.exe` — двойной щелчок, далее подсказки в окне.
             - **macOS:** `Kino-SSpoisk-macOS.dmg` — открыть, затем двойной щелчок по приложению.
