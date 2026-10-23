@@ -27,8 +27,8 @@ jobs:
       - name: Test EXE and verify actual installation files
         shell: powershell
         run: |
-          & .\dist\Kino-SSpoisk-Setup.exe --selftest
-          if ($LASTEXITCODE -ne 0) { throw 'Embedded archive self-test failed' }
+          $testProcess = Start-Process -FilePath (Resolve-Path '.\dist\Kino-SSpoisk-Setup.exe').Path -ArgumentList '--selftest' -Wait -PassThru
+          if ($testProcess.ExitCode -ne 0) { throw "Embedded archive self-test failed with code $($testProcess.ExitCode)" }
 
           # Invoke the same installation routine as the wizard's Next button.
           # Windows PowerShell 5.1 can load this .NET Framework WinForms EXE.
