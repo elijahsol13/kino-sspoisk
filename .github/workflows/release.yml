@@ -9,6 +9,7 @@ on:
       - 'START_HERE.html'
       - 'docs/**'
       - '.github/workflows/release.yml'
+      - '.github/workflows/windows-installer-smoke.yml'
   workflow_dispatch:
 
 permissions:
