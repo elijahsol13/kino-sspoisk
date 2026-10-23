@@ -1,0 +1,8 @@
+.DS_Store
+.serena/
+__pycache__/
+*.pyc
+dist/
+*.zip
+*.dmg
+*.exe

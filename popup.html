@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kino → SSpoisk</title>
+  <style>
+    :root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    * { box-sizing: border-box; }
+    body { width: 326px; margin: 0; padding: 19px; background: #151722; color: #fff; }
+    .brand { display: flex; align-items: center; gap: 9px; margin-bottom: 17px; font-size: 17px; font-weight: 750; }
+    .brand-icon { width: 28px; height: 28px; border-radius: 8px; background: #f55f35; display: grid; place-items: center; font-size: 13px; }
+    label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+    input { display: block; width: 100%; height: 42px; padding: 0 12px; border: 1px solid #4b5064; border-radius: 9px; outline: none; background: #242838; color: #fff; font: inherit; font-size: 14px; }
+    input::placeholder { color: #a8acbb; }
+    input:focus { border-color: #fc875d; box-shadow: 0 0 0 2px rgba(252, 135, 93, 0.18); }
+    button { display: block; width: 100%; height: 41px; margin-top: 10px; border: 0; border-radius: 9px; background: #f55f35; color: #fff; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
+    button:hover { background: #dc4d26; }
+    button:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+    p { margin: 13px 0 0; color: #adb3c5; font-size: 12px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <div class="brand"><span class="brand-icon" aria-hidden="true">▶</span> Kino → SSpoisk</div>
+  <form id="search-form">
+    <label for="search-input">Название фильма или сериала</label>
+    <input id="search-input" type="search" placeholder="Например, Интерстеллар" autocomplete="off" autofocus required>
+    <button type="submit">Найти на Кинопоиске →</button>
+  </form>
+  <p>Выбери фильм в результатах поиска. На его странице появится кнопка «Смотреть онлайн».</p>
+  <script src="links.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

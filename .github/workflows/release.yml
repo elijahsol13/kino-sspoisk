@@ -1,0 +1,87 @@
+name: Build installers and publish downloads
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build manual ZIP and native Windows executable
+        shell: pwsh
+        run: |
+          python installer/build.py
+          $compiler = "$env:WINDIR\Microsoft.NET\Framework\v4.0.30319\csc.exe"
+          if (!(Test-Path $compiler)) { throw "Missing .NET Framework C# compiler at $compiler" }
+          & $compiler /nologo /target:winexe /platform:anycpu /optimize+ /out:dist\Kino-SSpoisk-Setup.exe /resource:dist\Kino-SSpoisk-manual.zip,KinoExtension /reference:System.Windows.Forms.dll /reference:System.Drawing.dll /reference:System.IO.Compression.dll /reference:System.Core.dll installer\windows.cs
+          if ($LASTEXITCODE -ne 0) { throw "Windows compiler failed" }
+          & .\dist\Kino-SSpoisk-Setup.exe --selftest
+          if ($LASTEXITCODE -ne 0) { throw "Embedded archive check failed" }
+          python -m unittest discover -s tests -p '*_test.py'
+      - name: Upload Windows EXE and manual ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-and-manual
+          path: |
+            dist/Kino-SSpoisk-Setup.exe
+            dist/Kino-SSpoisk-manual.zip
+          if-no-files-found: error
+
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build universal macOS DMG
+        run: |
+          python3 installer/build.py
+          python3 -m unittest discover -s tests -p '*_test.py'
+          /usr/bin/codesign --verify --deep --strict 'dist/Установить Kino-SSpoisk.app'
+      - name: Upload macOS DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-dmg
+          path: dist/Kino-SSpoisk-macOS.dmg
+          if-no-files-found: error
+
+  release:
+    needs: [windows, macos]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: downloads
+          merge-multiple: true
+      - name: Check all three downloads
+        run: |
+          test -s downloads/Kino-SSpoisk-Setup.exe
+          test -s downloads/Kino-SSpoisk-macOS.dmg
+          test -s downloads/Kino-SSpoisk-manual.zip
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.0
+          name: Kino → SSpoisk 1.0.0
+          body: |
+            ## Скачать
+            - **Windows:** `Kino-SSpoisk-Setup.exe` — двойной щелчок, далее подсказки в окне.
+            - **macOS:** `Kino-SSpoisk-macOS.dmg` — открыть, затем двойной щелчок по приложению.
+            - **Вручную:** `Kino-SSpoisk-manual.zip` — распаковать и добавить расширение через страницу расширений браузера.
+
+            Установщики не подписаны сертификатами Apple/Microsoft, поэтому система может предупредить о неизвестном разработчике. В браузере всё равно нужно вручную разрешить локальную установку.
+          files: |
+            downloads/Kino-SSpoisk-Setup.exe
+            downloads/Kino-SSpoisk-macOS.dmg
+            downloads/Kino-SSpoisk-manual.zip
+          fail_on_unmatched_files: true

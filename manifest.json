@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Kino → SSpoisk",
+  "version": "1.0.0",
+  "description": "Поиск фильмов и сериалов на Кинопоиске и быстрый переход к внешнему плееру.",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_title": "Kino → SSpoisk",
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://kinopoisk.ru/*",
+        "https://www.kinopoisk.ru/*"
+      ],
+      "js": ["links.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
